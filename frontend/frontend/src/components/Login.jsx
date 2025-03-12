@@ -16,12 +16,15 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post('http://localhost:5000/api/auth/login', formData, {
+        withCredentials: true,
+      });
       setCookie('token', response.data.token, { path: '/', maxAge: 3600 });
       setMessage('Login successful!');
       navigate('/profile');
     } catch (error) {
       setMessage(error.response?.data?.message || 'Login failed');
+      console.log('Error logging in:', error.response?.data);
     }
   };
 

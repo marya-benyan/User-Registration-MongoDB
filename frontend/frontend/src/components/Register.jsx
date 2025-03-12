@@ -14,11 +14,14 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const response = await axios.post('http://localhost:5000/api/auth/register', formData, {
+        withCredentials: true,
+      });
       setCookie('token', response.data.token, { path: '/', maxAge: 3600 });
       setMessage('Registration successful! You can now log in.');
     } catch (error) {
       setMessage(error.response?.data?.message || 'Registration failed');
+      console.log('Error registering:', error.response?.data);
     }
   };
 

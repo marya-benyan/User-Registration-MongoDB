@@ -25,3 +25,15 @@ button {
   padding: 5px 10px;
   cursor: pointer;
 }
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+h3 {
+  margin-top: 20px;
+}

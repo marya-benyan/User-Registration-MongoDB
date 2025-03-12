@@ -64,7 +64,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign(
       { id: user._id, name: user.name },
       process.env.JWT_SECRET,
-      { expiresIn: '1h' }
+      { expiresIn: '1d' }
     );
 
     res.cookie('token', token, {
@@ -86,5 +86,4 @@ router.post('/login', async (req, res) => {
 router.get('/profile', require('../middleware/auth').protect, (req, res) => {
   res.json({ user: req.user });
 });
-
 module.exports = router;
